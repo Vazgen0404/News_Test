@@ -57,7 +57,7 @@ namespace News_Test.Services
                         select news;
 
 
-            return News;
+            return await News.Include(n => n.Categories).ToListAsync();
         }
 
         public async Task<IEnumerable<News>> GetByDate(DateTime startDate, DateTime finishDate)
